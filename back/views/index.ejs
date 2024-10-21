@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Welcome to E-commerce</h1>
+
+        <div class="mt-4">
+            <h2>Products</h2>
+            <a href="/product/addProduct" class="btn btn-primary mb-3">Add New Product</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% rows.forEach(function(row) { %>
+                        <tr>
+                            <td><%= row.idp %></td>
+                            <td><%= row.name_p %></td>
+                            <td><%= row.price %></td>
+                            <td><%= row.name_c %></td>
+                            <td>
+                                <a href="/product/editProduct/<%= row.idp %>" class="btn btn-warning">Edit</a>
+                                <a href="/product/deleteProduct/<%= row.idp %>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <h2>Categories</h2>
+            <a href="/category/addCategory" class="btn btn-primary mb-3">Add New Category</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% rows.forEach(function(row) { %>
+                        <tr>
+                            <td><%= row.idc %></td>
+                            <td><%= row.name_c %></td>
+                            <td>
+                                <a href="/category/editCategory/<%= row.idc %>" class="btn btn-warning">Edit</a>
+                                <a href="/category/deleteCategory/<%= row.idc %>" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
